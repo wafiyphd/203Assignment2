@@ -165,14 +165,15 @@ public class FTTConsole implements Serializable {
                 String username = kbd.nextLine();
                 User user = ftt.getUser(username);
                 if (user == null)
-                    System.out.println("\nUsername not found!");
+                    System.out.println("\nUsername not found! Please make sure it is correct, or sign up.");
 
                 else {
                     System.out.print("Enter password: ");
                     String password = kbd.nextLine();
                     if (!user.getPassword().equals(password))
-                        System.out.println("\nInvalid password!");
-                    userMenu(user);
+                        System.out.println("\nInvalid password! Please try again.");
+                    else
+                        userMenu(user);
                 }
         }
     }
@@ -298,9 +299,11 @@ public class FTTConsole implements Serializable {
             System.out.print("Average rating: " );
             if (user.getAverageRatings() == 0.0)
                 System.out.println("None.");
-            else
-                System.out.println(user.getAverageRatings());
-                      
+            else {
+                System.out.printf("%3.2f", user.getAverageRatings());
+                System.out.println();
+            }
+            
             String choice;
             do {
                 System.out.println("\nWould you like to: ");
@@ -327,7 +330,8 @@ public class FTTConsole implements Serializable {
             if (owner.getAverageRatings() == -1.0)
                 System.out.println("None. No reviews for your food trucks yet.");
             else {
-                System.out.println(owner.getAverageRatings());
+                System.out.printf("%3.2f", owner.getAverageRatings());
+                System.out.println();
                 System.out.println(owner.getAllReviews());
             }
             
@@ -404,9 +408,9 @@ public class FTTConsole implements Serializable {
             }
             
             // if the status of the truck is inactive
-            else if (ft.getStatus().equalsIgnoreCase("inactive"))
+            else if (ft != null && ft.getStatus().equalsIgnoreCase("inactive"))
                 System.out.println("\nYou can only review active food trucks. Please try again.");
-            
+
             else
                 System.out.println("\nFood Truck with that ID not found! Please try again.");
         }        

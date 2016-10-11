@@ -172,7 +172,7 @@ public class FoodTruck implements Serializable {
     public String getAllReviews()
     {
         if (reviews.isEmpty())
-            return "No reviews yet."; // a particular truck hasn't been reviewed yet
+            return "No reviews yet.\n"; // a particular truck hasn't been reviewed yet
         else
         {
             String all = "";
