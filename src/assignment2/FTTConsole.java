@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
  * A class that is an interface between the system and its users.
  * A class to prompt for user's inputs and generate output as well as for users
  * to access the different functionality provided by this system.
- * @author Root
+ * @author Wafiy Damit
  */
 public class FTTConsole implements Serializable {
     
@@ -26,7 +26,8 @@ public class FTTConsole implements Serializable {
         do
         {
             /**
-             * menu
+             * main starting screen for logging in and
+             * signing up.
              */
             System.out.println("\n--- FOOD TRUCK TRACKER ---");
             
@@ -51,12 +52,17 @@ public class FTTConsole implements Serializable {
                 
     }
     
+    /**
+     * A method to check the number of users currently signed up and 
+     * stored in the system as well as the number of food trucks
+     * in the system.
+     */
     public static void random()
     {
         System.out.println("\n--- Stats ---");
         System.out.println("There are " + ftt.getFTTUsers().size() + " users signed up.");
         System.out.println(ftt.countCust() + " are customers, and " + ftt.countOwner() + " are food truck owners.");
-        System.out.println("There are a total of " + ftt.getFTTTrucks().size() + " food trucks in the system.");
+        System.out.println("There are a total of " + ftt.getFTTTrucks().size() + " food trucks in the system.");       
     }
     
     /** 
@@ -147,7 +153,7 @@ public class FTTConsole implements Serializable {
     /** 
      * login method
      * to find the user and authenticate
-     * @return the logged in user
+     * and returns the logged in user
      */
     public static void login()
     {
@@ -173,7 +179,8 @@ public class FTTConsole implements Serializable {
    
     /**
      * Menu for a logged in user
-     * @param user 
+     * @param user that is logged in from 
+     * previous logging in screen
      */
     public static void userMenu(User user)
     {
@@ -274,6 +281,12 @@ public class FTTConsole implements Serializable {
         
     }
     
+    /**
+     * Allowing user to view truck information as well as reviews
+     * that they have written, if user is customer, or reviews for their 
+     * food trucks if user logged in is an owner
+     * @param user logged in
+     */
     public static void viewTruckInformation(User user)
     {
         System.out.println("\n--- Viewing Food Truck Information ---");
@@ -336,6 +349,11 @@ public class FTTConsole implements Serializable {
         }        
     }
     
+    /**
+     * Allow a customer to review a truck 
+     * they wish to review
+     * @param user logged in, which is a customer
+     */
     public static void reviewTruck(Customer user)
     {
         System.out.println("\n--- Reviewing a Truck ---");      
@@ -385,6 +403,7 @@ public class FTTConsole implements Serializable {
                 System.out.println(r.toString());
             }
             
+            // if the status of the truck is inactive
             else if (ft.getStatus().equalsIgnoreCase("inactive"))
                 System.out.println("\nYou can only review active food trucks. Please try again.");
             
@@ -393,6 +412,10 @@ public class FTTConsole implements Serializable {
         }        
     }
     
+    /**
+     * Allowing user to view the reviews of a particular
+     * truck wanted by the user, by entering ID
+     */
     public static void truckInfo()
     {
         System.out.println("\n--- Viewing reviews written ---");
@@ -405,6 +428,11 @@ public class FTTConsole implements Serializable {
             System.out.println("\nFood Truck with that ID not found! Please try again.");
     }
     
+    /**
+     * A method to allow the sorting of the reviews of a food truck
+     * whether by date or by ratings
+     * @param ft the food truck wanted by the user
+     */
     public static void sortList(FoodTruck ft)
     {
         if (ft.getReviews().isEmpty()) {
@@ -512,6 +540,10 @@ public class FTTConsole implements Serializable {
         }
     }
     
+    /**
+     * A method allowing the saving of the session data
+     * to file allowing future usages through loading
+     */
     public static void saveData()
     {
         System.out.println("\n--- Saving the FTT session data to file ---");
@@ -551,6 +583,10 @@ public class FTTConsole implements Serializable {
         }
     }
     
+    /**
+     * A method to load any existing session data on file
+     * to be used in the new session
+     */
     public static void loadData()
     {
         System.out.println("\n--- Loading existing FTT data into session ---");

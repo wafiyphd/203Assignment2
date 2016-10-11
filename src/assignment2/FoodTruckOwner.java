@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * FoodTruckOwner is a User that has a collection of Food Trucks
- * @author Root
+ * @author Wafiy Damit
  */
 public class FoodTruckOwner extends User implements Serializable {
 
@@ -13,7 +13,6 @@ public class FoodTruckOwner extends User implements Serializable {
 
     /**
      * constructor with arguments
-     *
      * @param userName username
      * @param password password
      * @param fullName name of the User
@@ -37,7 +36,6 @@ public class FoodTruckOwner extends User implements Serializable {
 
     /**
      * getter method to retrieve FoodTruckOwner's license No.
-     *
      * @return license number.
      */
     public String getLicenseNo() {
@@ -46,7 +44,6 @@ public class FoodTruckOwner extends User implements Serializable {
 
     /**
      * a setter method to set a new licenseNo
-     *
      * @param licenseNo new licenseNo of that particular FoodTruckOwner
      * @return true if license set successfully
      */
@@ -60,7 +57,6 @@ public class FoodTruckOwner extends User implements Serializable {
 
     /**
      * toString method to print out the information about a FoodTruckOwner
-     *
      * @return String contains FoodTruckOwner's information
      */
     @Override
@@ -70,7 +66,6 @@ public class FoodTruckOwner extends User implements Serializable {
 
     /**
      * A method to add new food truck to owner's list of Food Truck objects
-     *
      * @param truckName name of the truck
      * @param foodType type of cuisine
      * @return FoodTruck object that has been created
@@ -83,7 +78,6 @@ public class FoodTruckOwner extends User implements Serializable {
 
     /**
      * a method to return all FoodTruck objects an owner has
-     *
      * @return the list of food trucks an owner has
      */
     public String getFoodTrucks() {
@@ -98,7 +92,6 @@ public class FoodTruckOwner extends User implements Serializable {
 
     /**
      * A method find a particular FoodTruck using truckID
-     *
      * @param truckID truckID of intended FoodTruck
      * @return FoodTruck when it is found
      */
@@ -111,6 +104,11 @@ public class FoodTruckOwner extends User implements Serializable {
         return null;
     }
 
+    /**
+     * A method to get the average ratings of all the food trucks 
+     * owned by the owner
+     * @return the average ratings of all the food trucks owned by the owner
+     */
     @Override
     public double getAverageRatings()
     {
@@ -128,6 +126,11 @@ public class FoodTruckOwner extends User implements Serializable {
             return rating/(reviewed);
     }
     
+    /**
+     * A method to get a list of all the reviews received by the owner for
+     * all his food trucks
+     * @return a list of all the reviews received by the owner
+     */
     public String getAllReviews()
     {
         String all = "";

@@ -3,8 +3,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- *
- * @author Root
+ * A class of customers which is a subclass of Users of the Food Truck Application
+ * Attributes is same as User, with an addition of an array list of reviews
+ * @author Wafiy Damit
  */
 public class Customer extends User implements Serializable  {
     
@@ -25,23 +26,28 @@ public class Customer extends User implements Serializable  {
     }
     
     /**
-     * 
-     * @param date
-     * @param comments
-     * @param rating
-     * @return 
+     * A method to add a review written by the customer into their own array list
+     * of reviews written
+     * @param reviewer the reviewer that wrote the review
+     * @param date the date when the reviews was written
+     * @param comments the comments or description by the customer regarding a food truck
+     * @param rating the rating, out of 5, given by the customer 
+     * @return the review when it is successfully added to the array list 
      */
-    public Review addReview(String date, String comments, double rating)
+    public Review addReview(Customer reviewer, String date, String comments, double rating)
     {
-        Review r = new Review(date, comments, rating);
+        Review r = new Review(reviewer, date, comments, rating);
         reviews.add(r);
         return r;
     }
     
-    @Override
     /**
-     * 
+     * A method to get the average ratings of all the 
+     * ratings given by the customer
+     * @return the average rating when it is available, or 0
+     * when it is empty
      */
+    @Override
     public double getAverageRatings()
     {
         if (reviews.isEmpty())
@@ -55,8 +61,9 @@ public class Customer extends User implements Serializable  {
     }
     
     /**
-     * 
-     * @return 
+     * A method to get all the reviews written by the customer 
+     * @return all the reviews written by the customer when it is available
+     * and returns no reviews written yet when empty
      */
     public String getAllReviews()
     {
@@ -69,5 +76,4 @@ public class Customer extends User implements Serializable  {
             return all;
         }
     }
-
 }

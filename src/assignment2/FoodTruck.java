@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * A class to create a FoodTruck object that is owned by its owner.
  * FoodTruck has attributes truckID, truckName, location, foodType and status. 
- * @author Root
+ * @author Wafiy Damit
  */
 public class FoodTruck implements Serializable {
     
@@ -35,16 +35,16 @@ public class FoodTruck implements Serializable {
     }
 
     /**
-     * 
-     * @param cust
-     * @param date
-     * @param comments
-     * @param rating
-     * @return 
+     * A method to add reviews to the list of reviews received by a food truck
+     * @param cust the writer of the review
+     * @param date the date the review was written
+     * @param comments any comments or description from the writer 
+     * @param rating rating out of 5 of the food truck
+     * @return returns the review when it is successfully added to the array list
      */
     public Review addReview(Customer cust, String date, String comments, double rating)
     {
-        Review r = cust.addReview(date, comments, rating);
+        Review r = cust.addReview(cust, date, comments, rating);
         reviews.add(r);
         return r;
     }
@@ -121,6 +121,7 @@ public class FoodTruck implements Serializable {
         this.location = location;
         return true;
     }
+    
     /**
      * setter method to set new food type that a truck serves
      * @param foodType new food type to be served
@@ -146,8 +147,9 @@ public class FoodTruck implements Serializable {
     }
 
     /**
-     * 
-     * @return 
+     * A method to get the average ratings a truck has received
+     * @return -1 if it has not received any reviews yet or 
+     * returns the average ratings when there are reviews
      */
     public double getAverageRatings()
     {
@@ -162,6 +164,11 @@ public class FoodTruck implements Serializable {
         }
     }
     
+    /**
+     * A method to show all the reviews a food truck has received
+     * @return returns no reviews yet if not reviewed yet, and returns
+     * the list of reviews it has received when its available
+     */
     public String getAllReviews()
     {
         if (reviews.isEmpty())
@@ -175,6 +182,10 @@ public class FoodTruck implements Serializable {
         }
     }
 
+    /**
+     * A method to get the array list of reviews
+     * @return the array list of reviews
+     */
     public ArrayList<Review> getReviews() {
         return reviews;
     }

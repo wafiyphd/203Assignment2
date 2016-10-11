@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * A facade controller that contains a collection of Users and 
  * a collection of Food Trucks
- * @author Root
+ * @author Wafiy Damit
  */
 public class FoodTruckTracker implements Serializable {
 
@@ -98,6 +98,11 @@ public class FoodTruckTracker implements Serializable {
         return ft;
     }
         
+    /**
+     * A method to get a list of all the food trucks in the system
+     * @return a string of all the food trucks in the system, and returns
+     * no trucks yet, when it is empty.
+     */
     public String allFoodTrucks()
     {
         if (FTTFoodTrucks.isEmpty())
@@ -108,6 +113,12 @@ public class FoodTruckTracker implements Serializable {
         return allTrucks;
     }
 
+    /**
+     * A method to find a list of food trucks based on a string parameter
+     * @param string a string, either location or food type enter by user to 
+     * search for
+     * @return a string of all the trucks found based on the parameter entered
+     */
     public String findFoodTruck(String string) {
         if (FTTFoodTrucks.isEmpty())
             return "No Trucks Yet";
@@ -122,6 +133,12 @@ public class FoodTruckTracker implements Serializable {
         }
     }
     
+    /**
+     * A method to find a specific food truck based on its ID
+     * @param id id of the food truck wanted by the user
+     * @return the food truck wanted based on parameter if found, and
+     * null if not found
+     */
     public FoodTruck findFoodTruckID (String id) {
         for (FoodTruck ft : FTTFoodTrucks)
             if (ft.getTruckID().equalsIgnoreCase(id)) 
@@ -137,10 +154,19 @@ public class FoodTruckTracker implements Serializable {
         return FTTUsers;
     }
     
+    /**
+     * A method to get the array list of food trucks
+     * @return the array list of food trucks
+     */
     public ArrayList<FoodTruck> getFTTTrucks() {
         return FTTFoodTrucks;
     }
     
+    /**
+     * A method to count the number of customers signed up 
+     * in the system
+     * @return integer number of the amount of customers signed up
+     */
     public int countCust()
     {
         int cust = 0;
@@ -150,11 +176,16 @@ public class FoodTruckTracker implements Serializable {
         return cust;                
     }
     
+    /**
+     * A method to count the number of food truck owners signed up 
+     * in the system
+     * @return integer number of the amount of owners signed up
+     */
     public int countOwner()
     {
         int own = 0;
         for (User u:FTTUsers)
-            if (u instanceof Customer)
+            if (u instanceof FoodTruckOwner)
                 own++;
         return own;                
     }

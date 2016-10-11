@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * An abstract class to represent a User of the Food Truck Application
- * @author Root
+ * @author Wafiy Damit
  */
 public abstract class User implements Serializable {
     private String username;
@@ -99,7 +99,11 @@ public abstract class User implements Serializable {
         this.email = email;
         return true;
     }
-
+    
+    /**
+     * hashCode()
+     * @return integer represented by username of user
+     */
     @Override
     public int hashCode() {
         int hash = 3;
@@ -107,6 +111,11 @@ public abstract class User implements Serializable {
         return hash;
     }
 
+    /**
+     * a method to compare whether an user is equal
+     * with another user
+     * @return boolean true or false depending on result
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -120,8 +129,9 @@ public abstract class User implements Serializable {
     }
 
     /**
-     * 
-     * @return 
+     * an abstract method for getting the average ratings 
+     * of reviews written or received by the User
+     * @return the value of the average
      */
     public abstract double getAverageRatings();
     

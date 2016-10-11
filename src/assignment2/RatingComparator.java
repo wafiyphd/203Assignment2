@@ -1,8 +1,8 @@
 package assignment2;
 import java.util.*;
 /**
- *
- * @author Root
+ * A method to compare the ratings of reviews 
+ * @author Wafiy Damit
  */
 public class RatingComparator implements Comparator<Review> {
     
