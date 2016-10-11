@@ -136,7 +136,7 @@ public class FoodTruckOwner extends User implements Serializable {
         String all = "";
         int num = 1;
         for (FoodTruck ft:ownedTrucks) {
-            all += num + ". "  + ft.getTruckName() + " reviews: \n" + ft.getAllReviews() + "\n";
+            all += num + ". "  + ft.getTruckName() + " (" + ft.getTruckID() + ") reviews: \n" + ft.getAllReviews() + "\n";
             num++;
         }
         return all;
